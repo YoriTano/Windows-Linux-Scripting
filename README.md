@@ -1,7 +1,8 @@
 # Windows-Linux-Scripting
-This lab demonstrates network health monitoring through OS-level scripting on both Windows and Linux platforms. The goal is to create automated scripts that check network configuration and connectivity, saving the results to a log file.
 
-Objectives:
+This lab demonstrates network health monitoring through OS-level scripting on both Windows and Linux platforms. The goal is to create automated scripts that check network configuration and connectivity across different operating systems.
+
+## 📋 Objectives
 
 - Create network diagnostic scripts for Windows (Batch) and Linux (Bash)
 - Capture IP configuration details
@@ -9,27 +10,35 @@ Objectives:
 - Save diagnostic results to log files
 - Understand cross-platform scripting differences
 
-Technologies Used
+## 🛠️ Technologies Used
 
-Windows: Batch Scripting (.bat)
-Linux: Bash Scripting (.sh)
-Commands: ipconfig, ping (Windows) | ip, ping (Linux)
+| Component | Technology |
+|-----------|-----------|
+| **Windows** | Batch Scripting (.bat) |
+| **Linux** | Bash Scripting (.sh) |
+| **Windows Commands** | `ipconfig`, `ping` |
+| **Linux Commands** | `ip`, `ping` |
 
+---
 
-Part 1: Linux Setup
-Initial Setup
-The lab begins by setting up the Linux environment with necessary configuration files.
-The setup copies essential bash configuration files:
+## Part 1: Linux Setup
 
-.bashrc - Bash shell configuration
-.bash_profile - Login shell configuration
-.inputrc - Input configuration
-.profile - Profile settings
+### Initial Setup
 
+The lab begins by setting up the Linux environment with necessary configuration files. The setup copies essential bash configuration files:
 
-Part 2: Windows Network Health Check Script
-Script: network_check.bat
+- `.bashrc` - Bash shell configuration
+- `.bash_profile` - Login shell configuration
+- `.inputrc` - Input configuration
+- `.profile` - Profile settings
 
+---
+
+## Part 2: Windows Network Health Check Script
+
+### Script: `network_check.bat`
+
+```batch
 mkdir tempinfo
 
 echo ========================================== > tempinfo\myIPhealth.txt
@@ -50,25 +59,34 @@ ping 127.0.0.1 -n 4 >> tempinfo\myIPhealth.txt
 
 echo Script Execution Complete. Results saved in: tempinfo\myIPhealth.txt
 pause
+```
 
+### Sample Output
+
+```
 Host Name: Ethan
 Node Type: Hybrid
 IPv4 Address: 10.0.0.13
 Default Gateway: 10.0.0.1
 Physical Address (MAC): 10-FF-E0-B8-39-A5
 DNS Servers and DHCP information
+```
 
-Key Features of Windows Script
+### Key Features
 
-Creates a tempinfo directory for log storage
-Uses ipconfig /all to capture complete network configuration
-Pings loopback address (127.0.0.1) to verify TCP/IP stack
-Timestamps the log with generation date and time
-Pauses at the end to allow user to review output
+✅ Creates a `tempinfo` directory for log storage  
+✅ Uses `ipconfig /all` to capture complete network configuration  
+✅ Pings loopback address (127.0.0.1) to verify TCP/IP stack  
+✅ Timestamps the log with generation date and time  
+✅ Pauses at the end to allow user to review output  
 
-Part 3: Linux Network Health Check Script
-Script: network_check.sh
-Script Contents
+---
+
+## Part 3: Linux Network Health Check Script
+
+### Script: `network_check.sh`
+
+```bash
 #!/bin/bash
 
 mkdir -p tempinfo
@@ -91,23 +109,28 @@ echo "" >> tempinfo/myIPhealth.txt
 ping -c 4 127.0.0.1 >> tempinfo/myIPhealth.txt
 
 echo "Script Execution Complete. Results saved in: tempinfo/myIPhealth.txt"
+```
 
-Linux network health log showing:
+### Sample Output
 
-Multiple network adapters (Ethernet and Ethernet 3)
-IPv4 addresses (10.0.0.13 and 192.168.56.1)
-IPv6 addresses
-Default gateway information
-Loopback ping test results with 0% packet loss
+The Linux network health log shows:
 
+- Multiple network adapters (Ethernet and Ethernet 3)
+- IPv4 addresses (10.0.0.13 and 192.168.56.1)
+- IPv6 addresses
+- Default gateway information
+- Loopback ping test results with 0% packet loss
 
+### Key Features
 
-Key Features of Linux Script
+✅ Uses shebang (`#!/bin/bash`) to specify bash interpreter  
+✅ Uses `mkdir -p` to create directory (no error if exists)  
+✅ Leverages `$(date)` command substitution for timestamp  
+✅ Uses `ping -c 4` to limit ping count (prevents infinite loop)  
+✅ Outputs network configuration using `ipconfig` command  
 
-Uses shebang (#!/bin/bash) to specify bash interpreter
-Uses mkdir -p to create directory (no error if exists)
-Leverages $(date) command substitution for timestamp
-Uses ping -c 4 to limit ping count (prevents infinite loop)
-Outputs network configuration using ipconfig command
+---
 
+## 📝 Summary
 
+Both scripts provide comprehensive network diagnostics for their respective platforms, capturing essential network information and connectivity status. The key difference is the command syntax and shell-specific features used to accomplish the same goal across Windows and Linux environments.
