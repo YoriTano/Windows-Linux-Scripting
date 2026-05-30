@@ -71,6 +71,7 @@ Default Gateway: 10.0.0.1
 Physical Address (MAC): 10-FF-E0-B8-39-A5
 DNS Servers and DHCP information
 ```
+<img width="1261" height="969" alt="Screenshot 2026-05-16 203347" src="https://github.com/user-attachments/assets/109c8390-4ee0-4e49-ae7c-c2a1b9c7c5b9" />
 
 ### Key Features
 
@@ -110,8 +111,9 @@ ping -c 4 127.0.0.1 >> tempinfo/myIPhealth.txt
 
 echo "Script Execution Complete. Results saved in: tempinfo/myIPhealth.txt"
 ```
-
+<img width="571" height="366" alt="Screenshot 2026-05-16 222929" src="https://github.com/user-attachments/assets/b366d357-e2ab-44c8-bdb4-88535dab3dd8" />
 ### Sample Output
+<img width="1577" height="922" alt="Screenshot 2026-05-16 222738" src="https://github.com/user-attachments/assets/b8f9ff29-ed6a-428d-bead-ed528e73bfc0" />
 
 The Linux network health log shows:
 
